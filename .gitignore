@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# 環境変数（コミット禁止）
+.env
+
+# モデルキャッシュ（容量大・再ダウンロード可）
+.cache/
+
+# テスト用一時データ
+chroma_test/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ChromaDBデータ
+# chroma-data/  ← Git管理する場合はコメントアウト
