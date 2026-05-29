@@ -25,7 +25,7 @@ Claude Codeおよびコンテンツ制作のナレッジベースとして活用
 [embed.py] ← sentence-transformersでベクトル化
         │
         ▼
-[ChromaDB] ← ベクトル永続化（./chroma_db/）
+[ChromaDB] ← ベクトル永続化（./chroma-data/）
         │
         ▼
 [search_api.py] ← FastAPI検索エンドポイント（ローカル起動）
@@ -63,7 +63,7 @@ claude-knowledge-base/
 │   ├── blog/                   # 公式ブログ記事
 │   ├── release-notes/          # リリースノート
 │   └── academy/                # Academyコース（手動追加）
-├── chroma_db/                  # ChromaDBデータ（自動生成）
+├── chroma-data/                # ChromaDBデータ（自動生成）
 ├── tests/
 │   ├── test_fetch.py
 │   ├── test_embed.py
@@ -91,15 +91,15 @@ python scripts/fetch.py
 python scripts/embed.py
 
 # 検索API起動
-uvicorn scripts.search_api:app --reload
-# → http://localhost:8000/docs でSwagger UI確認可能
+uvicorn scripts.search_api:app --reload --port 8001
+# → http://localhost:8001/docs でSwagger UI確認可能
 ```
 
 ## 検索APIの使い方
 
 ```bash
 # クエリ例
-curl -X POST http://localhost:8000/search \
+curl -X POST http://localhost:8001/search \
   -H "Content-Type: application/json" \
   -d '{"query": "Claude Codeのサブエージェント機能", "top_k": 5}'
 ```
